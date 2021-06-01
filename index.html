@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+
+<script type="text/babel">
+
+
+class Content extends React.Component {
+    
+        render() {
+
+            var styleHeader = {
+                padding: 10,
+                backgroundColor: 'red',
+                borderRadius: 5,
+                color: this.props.colorText,
+                textAlign: 'center',
+                margin: 15,
+                fontFamily: 'sans-serif',
+                fontWeight: 900,
+                textTransform: 'Uppercase'
+            }
+
+            return <div style={styleHeader}>
+                {this.props.children}
+            </div>
+        }
+    }
+
+    let container = document.querySelector('#container');
+    
+    ReactDOM.render(
+        <div>
+            <Content>Заголовок</Content>
+            <Content>Заголовок</Content>
+            <Content colorText='red'>Заголовок</Content>
+            <Content>Заголовок</Content>
+        </div>,
+        container
+    );
+    </script>
+</body>
+</html>
