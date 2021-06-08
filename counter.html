@@ -43,6 +43,23 @@ class Counter extends React.Component {
         );
     }
 }
+class Btn extends React.Component {
+    
+    render() {
+        var btnStyle = {
+            fontSize: "1rem",
+            width: 60, 
+            height: 30,
+            color: "black",
+            fontWeight: "bold",
+            lineHeihgt: "3px"
+        }
+        
+        return(
+            <button onClick={this.props.clickHandler} style={btnStyle}>+</button>
+        );
+    }
+}
 class CounterParent extends React.Component {
     constructor(props) {
         super(props);
@@ -55,8 +72,16 @@ class CounterParent extends React.Component {
     }
 
     clicked(e) {
+        var resCoutn = this.state.count;
+
+        if(e.shiftKey) {
+            resCoutn += 10;
+        } else {
+            resCoutn += 1;
+        }
+
         this.setState({
-            count: this.state.count + 1
+            count: resCoutn
         });
     }
 
@@ -69,20 +94,11 @@ class CounterParent extends React.Component {
             borderRadius: 10,
             textAlign: 'center'
         }
-
-        var btnStyle = {
-            fontSize: "1rem",
-            width: 30, 
-            height: 30,
-            color: "black",
-            fontWeight: "bold",
-            lineHeihgt: "3px"
-        }
-
+        
         return (
             <div style={bgStyle}>
                 <Counter display={this.state.count} />
-                <button onClick={this.clicked} style={btnStyle}>+</button>
+                <Btn clickHandler={this.clicked}>+</Btn>
             </div>
         );
     }
